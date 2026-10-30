@@ -9,8 +9,8 @@ export class JwtStrategy extends PassportStrategy(Strategy, "jwt") {
     constructor(readonly __config:ConfigService) {
         super({
             jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-            secretOrKey: __config.getOrThrow("jwt.secret"),
-        })
+            secretOrKey: __config.getOrThrow("jwt.secret")
+        });
     }
 
     async validate(payload:Jwt):Promise<Jwt> {

@@ -46,7 +46,7 @@
     "@nestjs/schematics": "^12.0.0",
     "@nestjs/testing": "^12.0.1",
     "@stylistic/eslint-plugin": "^5.10.0",
-    "@suil0304/suil-lints": "https://github.com/suil0304/suil-lints/releases/download/v0.1.2/suil0304-suil-lints-0.1.2.tgz",
+    "@suil0304/suil-lints": "https://github.com/suil0304/suil-lints/releases/download/v0.2.2/suil0304-suil-lints-0.2.2.tgz",
     "@types/express": "^5.0.0",
     "@types/jest": "^30.0.0",
     "@types/node": "^24.0.0",
