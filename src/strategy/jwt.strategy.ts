@@ -6,10 +6,10 @@ import { Jwt } from "../types/jwt.type";
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy, "jwt") {
-    constructor(readonly __config:ConfigService) {
+    constructor(config:ConfigService) {
         super({
             jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-            secretOrKey: __config.getOrThrow("jwt.secret")
+            secretOrKey: config.getOrThrow("jwt.secret")
         });
     }
 
