@@ -5,6 +5,8 @@ import { AppService } from './app.service';
 import { ConfigModule } from "@nestjs/config";
 import { LocationModule } from './location/location.module';
 import { AuthModule } from './auth/auth.module';
+import { WeatherModule } from './weather/weather.module';
+import { UserModule } from './user/user.module';
 // config
 import commonConfig from './configs/common.config';
 import jwtConfig from './configs/jwt.config';
@@ -12,7 +14,7 @@ import jwtConfig from './configs/jwt.config';
 import schemaEnv from './schema/env';
 // utils
 import { join } from 'path';
-import { UserModule } from './user/user.module';
+
 
 @Module({
     imports: [
@@ -27,6 +29,7 @@ import { UserModule } from './user/user.module';
         }),
         LocationModule,
         AuthModule,
+        WeatherModule,
         UserModule
     ],
     controllers: [AppController],
