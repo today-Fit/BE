@@ -8,7 +8,7 @@ import { LocationService } from "./location.service";
   imports: [
     HttpModule.registerAsync({
       inject: [ConfigService],
-      useFactory: (configService: ConfigService) => ({
+      useFactory: (configService:ConfigService) => ({
         baseURL: "https://api.vworld.kr/req/address",
         timeout: 5000,
         params: {
