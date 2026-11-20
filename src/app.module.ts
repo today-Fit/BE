@@ -3,6 +3,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 // module
 import { ConfigModule } from "@nestjs/config";
+import { AuthModule } from './auth/auth.module';
 // config
 import commonConfig from './configs/common.config';
 import jwtConfig from './configs/jwt.config';
@@ -21,7 +22,8 @@ import { join } from 'path';
             ],
             envFilePath: join(__dirname, `../.env.${process.env["NODE_ENV"]!}`),
             validationSchema: schemaEnv
-        })
+        }),
+        AuthModule
     ],
     controllers: [AppController],
     providers: [AppService]
