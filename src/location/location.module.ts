@@ -25,5 +25,6 @@ import { LocationService } from "./location.service";
   ],
   controllers: [LocationController],
   providers: [LocationService],
+  exports: [LocationService],
 })
 export class LocationModule {}
