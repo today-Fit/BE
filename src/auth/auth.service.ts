@@ -6,6 +6,7 @@ import { JwtPayloadAccess, JwtPayloadRefresh } from './types/jwt-payload.type';
 import { ConfigService } from '@nestjs/config';
 import { JwtContainer } from './types/jwt-container.type';
 import { isRefreshToken } from './utils/is-refresh-token.util';
+import { GoingToSchoolTime, UserConstitution } from '@prisma/client';
 
 @Injectable()
 export class AuthService {
@@ -26,12 +27,23 @@ export class AuthService {
             throw new ConflictException("해당 이름은 이미 존재합니다.");
         }
 
-        // 생성할 객체는 하나이기 때문에 transaction을 사용하지 않았습니다.
-        const newUser = await this.__prisma.user.create({
-            data: {
-                name,
-                password: await argon2.hash(password)
-            }
+        const newUser = await this.__prisma.$transaction(async (transaction) => {
+            const user = await transaction.user.create({
+                data: {
+                    name,
+                    password: await argon2.hash(password)
+                }
+            });
+
+            await transaction.userSetting.create({
+                data: {
+                    userId: user.id,
+                    goingToSchoolTime: GoingToSchoolTime.morning,
+                    constitution: UserConstitution.normal
+                }
+            });
+
+            return user;
         });
 
         const [
