@@ -4,16 +4,20 @@ import { AppService } from './app.service';
 // module
 import { ConfigModule } from "@nestjs/config";
 // config
-import { join } from 'path';
-import schemaEnv from './schema/env';
 import commonConfig from './configs/common.config';
+import jwtConfig from './configs/jwt.config';
+// schema
+import schemaEnv from './schema/env';
+// utils
+import { join } from 'path';
 
 @Module({
     imports: [
         ConfigModule.forRoot({
             isGlobal: true,
             load: [
-                commonConfig
+                commonConfig,
+                jwtConfig
             ],
             envFilePath: join(__dirname, `../.env.${process.env["NODE_ENV"]!}`),
             validationSchema: schemaEnv
