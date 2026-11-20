@@ -6,6 +6,8 @@ import { PrismaExceptionFilter } from './filters/prisma-execption.filter';
 async function bootstrap() {
     const app = await NestFactory.create(AppModule);
 
+    app.enableShutdownHooks();
+
     app.useGlobalPipes(
         new ValidationPipe({
             transform: true,
