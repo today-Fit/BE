@@ -1,9 +1,9 @@
 import { createParamDecorator } from "@nestjs/common";
-import { Jwt } from "../types/jwt.type";
+import { JwtPayloadAccess } from "../auth/types/jwt-payload.type";
 
-export const GetUser = createParamDecorator((key:keyof Jwt | undefined, context) => {
+export const GetUser = createParamDecorator((key:keyof JwtPayloadAccess | undefined, context) => {
     const req = context.switchToHttp().getRequest();
-    const userPayload:Jwt = req.user;
+    const userPayload:JwtPayloadAccess = req.user;
 
     return key ? userPayload[key] : userPayload;
 });
