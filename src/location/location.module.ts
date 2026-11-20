@@ -1,12 +1,16 @@
 import { Module } from "@nestjs/common";
 import { HttpModule } from "@nestjs/axios";
-import { ConfigService } from "@nestjs/config";
+import { ConfigModule, ConfigService } from "@nestjs/config";
 import { LocationController } from "./location.controller";
 import { LocationService } from "./location.service";
+import locationConfig from "../configs/location.config";
 
 @Module({
     imports: [
         HttpModule.registerAsync({
+            imports: [
+                ConfigModule.forFeature(locationConfig)
+            ],
             inject: [ConfigService],
             useFactory: (configService:ConfigService) => ({
                 baseURL: "https://api.vworld.kr/req/address",
@@ -18,7 +22,7 @@ import { LocationService } from "./location.service";
                     crs: "epsg:4326",
                     format: "json",
                     type: "both",
-                    key: configService.get<string>("VWORLD_API_KEY")
+                    key: configService.getOrThrow("location.apiKey")
                 }
             })
         })
