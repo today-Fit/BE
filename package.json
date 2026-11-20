@@ -20,7 +20,7 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "generate": "bun prisma generate",
+    "db:generate": "bun prisma generate",
     "db:migrate": "bun prisma migrate dev --name",
     "db:deploy": "bun prisma migrate deploy",
     "db:reset": "bun prisma migrate reset"
@@ -31,6 +31,7 @@
     "@nestjs/config": "^12.0.1",
     "@nestjs/core": "^12.0.1",
     "@nestjs/jwt": "^12.0.3",
+    "@nestjs/mapped-types": "^12.0.1",
     "@nestjs/observe": "^0.1.8",
     "@nestjs/passport": "^12.0.0",
     "@nestjs/platform-express": "^12.0.1",

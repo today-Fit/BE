@@ -12,6 +12,7 @@ import jwtConfig from './configs/jwt.config';
 import schemaEnv from './schema/env';
 // utils
 import { join } from 'path';
+import { UserModule } from './user/user.module';
 
 @Module({
     imports: [
@@ -25,7 +26,8 @@ import { join } from 'path';
             validationSchema: schemaEnv
         }),
         LocationModule,
-        AuthModule
+        AuthModule,
+        UserModule
     ],
     controllers: [AppController],
     providers: [AppService]
