@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 // module
 import { ConfigModule } from "@nestjs/config";
 import { PrismaModule } from './prisma/prisma.module';
+import { LocationModule } from './location/location.module';
 // config
 import databaseConfig from './configs/database.config';
 import jwtConfig from './configs/jwt.config';
@@ -17,7 +18,8 @@ import jwtConfig from './configs/jwt.config';
                 jwtConfig
             ]
         }),
-        PrismaModule
+        PrismaModule,
+        LocationModule
     ],
     controllers: [AppController],
     providers: [AppService]
