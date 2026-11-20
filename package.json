@@ -26,6 +26,7 @@
     "db:reset": "bun prisma migrate reset"
   },
   "dependencies": {
+    "@github/copilot-sdk": "^1.0.34",
     "@nestjs/axios": "^12.0.2",
     "@nestjs/common": "^12.0.1",
     "@nestjs/config": "^12.0.1",
